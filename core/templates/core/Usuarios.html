@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Usuarios</title>
+  </head>
+  <body>
+    <body>
+      <div class="container">
+          <h1>Usuarios Agregados</h1>
+          <div class="row">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contrasena</th>
+                    <th scope="col">Comentarios</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    {% for ve in usuarios %}
+                    <tr>
+                      <td>{{ve.nombre}}</td>
+                      <td>{{ve.email}}</td>
+                      <td>{{ve.contrasena}}</td>
+                      <td>{{ve.comentarios}}</td>
+                      <td><a href="{% url 'form_mod_usuario' ve.email %}">Modificar</a></td>
+                      <td><a href="{% url 'form_del_usuario' ve.email %}">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+              <a href="{% url 'form_usuario' %}">Nuevo registro</a>
+          </div>
+      </div>
+  
+      <!-- Optional JavaScript; choose one of the two! -->
+  
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+
+    </body>
+  </body>
+</html>
